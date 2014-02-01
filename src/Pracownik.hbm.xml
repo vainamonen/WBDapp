@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Pracownik" schema="MURBANS4" table="PRACOWNIK">
+    <id name="idPracownika" type="long">
+      <column name="ID_PRACOWNIKA" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Adres" fetch="select" name="adres">
+      <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Oddzial" fetch="select" name="oddzial">
+      <column name="ID_INSTYTUCJI" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="pesel" type="string">
+      <column length="11" name="PESEL" not-null="true"/>
+    </property>
+    <property name="imie" type="string">
+      <column length="15" name="IMIE" not-null="true"/>
+    </property>
+    <property name="imie2" type="string">
+      <column length="15" name="IMIE2"/>
+    </property>
+    <property name="nazwisko" type="string">
+      <column length="20" name="NAZWISKO" not-null="true"/>
+    </property>
+    <property name="dataUrodzenia" type="date">
+      <column length="7" name="DATA_URODZENIA" not-null="true"/>
+    </property>
+    <property name="stanowisko" type="string">
+      <column length="20" name="STANOWISKO" not-null="true"/>
+    </property>
+    <property name="telefon" type="string">
+      <column length="20" name="TELEFON" not-null="true"/>
+    </property>
+    <property name="status" type="string">
+      <column length="30" name="STATUS" not-null="true"/>
+    </property>
+    <property name="pensja" type="big_decimal">
+      <column name="PENSJA" not-null="true" precision="10"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="zlecenies" table="ZLECENIE">
+      <key>
+        <column name="ID_KIEROWCY" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Zlecenie"/>
+    </set>
+  </class>
+</hibernate-mapping>

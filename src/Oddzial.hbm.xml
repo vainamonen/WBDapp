@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Oddzial" schema="MURBANS4" table="ODDZIAL">
+    <id name="idInstytucji" type="long">
+      <column name="ID_INSTYTUCJI" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Adres" fetch="select" name="adres">
+      <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="nazwaInstytucji" type="string">
+      <column length="100" name="NAZWA_INSTYTUCJI" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="saldos" table="SALDO">
+      <key>
+        <column name="ID_INSTYTUCJI" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Saldo"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="pracowniks" table="PRACOWNIK">
+      <key>
+        <column name="ID_INSTYTUCJI" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Pracownik"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="wydateks" table="WYDATEK">
+      <key>
+        <column name="ID_INSTYTUCJI" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Wydatek"/>
+    </set>
+  </class>
+</hibernate-mapping>

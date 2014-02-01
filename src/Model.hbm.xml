@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Model" schema="MURBANS4" table="MODEL">
+    <id name="idModelu" type="long">
+      <column name="ID_MODELU" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="TypTowaru" fetch="select" name="typTowaru">
+      <column name="ID_TYPU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="model" type="string">
+      <column length="30" name="MODEL" not-null="true"/>
+    </property>
+    <property name="marka" type="string">
+      <column length="30" name="MARKA" not-null="true"/>
+    </property>
+    <property name="koszt" type="big_decimal">
+      <column name="KOSZT" not-null="true" precision="14"/>
+    </property>
+    <property name="predkosc" type="big_decimal">
+      <column name="PREDKOSC" not-null="true" precision="5"/>
+    </property>
+    <property name="ladownosc" type="long">
+      <column name="LADOWNOSC" not-null="true" precision="10" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="pojazds" table="POJAZD">
+      <key>
+        <column name="ID_MODELU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Pojazd"/>
+    </set>
+  </class>
+</hibernate-mapping>

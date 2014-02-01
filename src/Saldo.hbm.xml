@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Saldo" schema="MURBANS4" table="SALDO">
+    <id name="idSalda" type="long">
+      <column name="ID_SALDA" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Oddzial" fetch="select" name="oddzial">
+      <column name="ID_INSTYTUCJI" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="kwota" type="big_decimal">
+      <column name="KWOTA" not-null="true" precision="14"/>
+    </property>
+    <property name="informacje" type="string">
+      <column length="200" name="INFORMACJE" not-null="true"/>
+    </property>
+    <property name="dataFaktury" type="date">
+      <column length="7" name="DATA_FAKTURY" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

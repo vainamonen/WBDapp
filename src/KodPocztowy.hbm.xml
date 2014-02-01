@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="KodPocztowy" schema="MURBANS4" table="KOD_POCZTOWY">
+    <id name="idKoduPoczt" type="long">
+      <column name="ID_KODU_POCZT" precision="10" scale="0"/>
+      <generator class="increment"/>
+    </id>
+    <property name="kodPocztowy" type="string">
+      <column length="5" name="KOD_POCZTOWY" not-null="true"/>
+    </property>
+    <property name="miasto" type="string">
+      <column length="30" name="MIASTO" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="adreses" table="ADRES">
+      <key>
+        <column name="ID_KODU_POCZT" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Adres"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-schema="MURBANS4"/>
+  <table-filter match-name="ADRES"/>
+  <table-filter match-name="MODEL"/>
+  <table-filter match-name="KOD_POCZTOWY"/>
+  <table-filter match-name="WYDATEK"/>
+  <table-filter match-name="LADUNEK"/>
+  <table-filter match-name="KONTRAHENT"/>
+  <table-filter match-name="TYP_TOWARU"/>
+  <table-filter match-name="PRACOWNIK"/>
+  <table-filter match-name="ODDZIAL"/>
+  <table-filter match-name="ZLECENIE"/>
+  <table-filter match-name="STATUS"/>
+  <table-filter match-name="SALDO"/>
+  <table-filter match-name="POJAZD"/>
+</hibernate-reverse-engineering>

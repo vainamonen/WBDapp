@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Kontrahent" schema="MURBANS4" table="KONTRAHENT">
+    <id name="idKontrahenta" type="long">
+      <column name="ID_KONTRAHENTA" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Adres" fetch="select" name="adres">
+      <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="nip" type="long">
+      <column name="NIP" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="regon" type="long">
+      <column name="REGON" not-null="true" precision="14" scale="0"/>
+    </property>
+    <property name="nazwa" type="string">
+      <column length="30" name="NAZWA" not-null="true"/>
+    </property>
+    <property name="telefon" type="string">
+      <column length="20" name="TELEFON" not-null="true"/>
+    </property>
+    <property name="EMail" type="string">
+      <column length="20" name="E_MAIL" not-null="true"/>
+    </property>
+    <property name="opis" type="string">
+      <column length="40" name="OPIS"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="zlecenies" table="ZLECENIE">
+      <key>
+        <column name="ID_KONTRAHENTA" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Zlecenie"/>
+    </set>
+  </class>
+</hibernate-mapping>

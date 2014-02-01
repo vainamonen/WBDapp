@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Adres" schema="MURBANS4" table="ADRES">
+    <id name="idAdresu" type="long">
+      <column name="ID_ADRESU" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="KodPocztowy" fetch="select" name="kodPocztowy">
+      <column name="ID_KODU_POCZT" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="ulica" type="string">
+      <column length="30" name="ULICA" not-null="true"/>
+    </property>
+    <property name="nrDomu" type="short">
+      <column name="NR_DOMU" not-null="true" precision="3" scale="0"/>
+    </property>
+    <property name="nrLokalu" type="java.lang.Short">
+      <column name="NR_LOKALU" precision="3" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="zleceniesForIdMety" table="ZLECENIE">
+      <key>
+        <column name="ID_METY" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Zlecenie"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="oddzials" table="ODDZIAL">
+      <key>
+        <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Oddzial"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="pracowniks" table="PRACOWNIK">
+      <key>
+        <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Pracownik"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="zleceniesForIdStartu" table="ZLECENIE">
+      <key>
+        <column name="ID_STARTU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Zlecenie"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="kontrahents" table="KONTRAHENT">
+      <key>
+        <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Kontrahent"/>
+    </set>
+  </class>
+</hibernate-mapping>

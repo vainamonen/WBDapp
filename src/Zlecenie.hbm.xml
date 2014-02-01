@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="Zlecenie" schema="MURBANS4" table="ZLECENIE">
+    <id name="idZlecenia" type="big_decimal">
+      <column name="ID_ZLECENIA" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Pojazd" fetch="select" name="pojazd">
+      <column name="ID_POJAZDU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Adres" fetch="select" name="adresByIdMety">
+      <column name="ID_METY" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Adres" fetch="select" name="adresByIdStartu">
+      <column name="ID_STARTU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Ladunek" fetch="select" name="ladunek">
+      <column name="ID_LADUNKU" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Pracownik" fetch="select" name="pracownik">
+      <column name="ID_KIEROWCY" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Status" fetch="select" name="status">
+      <column name="ID_STANU_ZLEC" not-null="true" precision="2" scale="0"/>
+    </many-to-one>
+    <many-to-one class="Kontrahent" fetch="select" name="kontrahent">
+      <column name="ID_KONTRAHENTA" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="wartosc" type="big_decimal">
+      <column name="WARTOSC" not-null="true" precision="14"/>
+    </property>
+    <property name="odleglosc" type="big_decimal">
+      <column name="ODLEGLOSC" not-null="true" precision="7"/>
+    </property>
+    <property name="dataPrzyjZlec" type="date">
+      <column length="7" name="DATA_PRZYJ_ZLEC" not-null="true"/>
+    </property>
+    <property name="dataZakZlec" type="date">
+      <column length="7" name="DATA_ZAK_ZLEC"/>
+    </property>
+  </class>
+</hibernate-mapping>

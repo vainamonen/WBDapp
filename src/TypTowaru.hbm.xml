@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="TypTowaru" schema="MURBANS4" table="TYP_TOWARU">
+    <id name="idTypu" type="long">
+      <column name="ID_TYPU" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="typ" type="string">
+      <column length="30" name="TYP" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="models" table="MODEL">
+      <key>
+        <column name="ID_TYPU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Model"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="laduneks" table="LADUNEK">
+      <key>
+        <column name="ID_TYPU" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="Ladunek"/>
+    </set>
+  </class>
+</hibernate-mapping>
