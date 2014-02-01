@@ -5,7 +5,7 @@
   <class name="Oddzial" schema="MURBANS4" table="ODDZIAL">
     <id name="idInstytucji" type="long">
       <column name="ID_INSTYTUCJI" precision="10" scale="0"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <many-to-one class="Adres" fetch="select" name="adres">
       <column name="ID_ADRESU" not-null="true" precision="10" scale="0"/>

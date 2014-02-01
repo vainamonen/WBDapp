@@ -5,7 +5,7 @@
   <class name="Adres" schema="MURBANS4" table="ADRES">
     <id name="idAdresu" type="long">
       <column name="ID_ADRESU" precision="10" scale="0"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <many-to-one class="KodPocztowy" fetch="select" name="kodPocztowy">
       <column name="ID_KODU_POCZT" not-null="true" precision="10" scale="0"/>

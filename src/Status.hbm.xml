@@ -3,9 +3,9 @@
 <!-- Generated 2014-02-01 15:20:17 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
   <class name="Status" schema="MURBANS4" table="STATUS">
-    <id name="stan" type="byte">
+    <id name="stan" type="long">
       <column name="STAN" precision="2" scale="0"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="opis" type="string">
       <column length="20" name="OPIS" not-null="true"/>

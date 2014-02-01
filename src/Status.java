@@ -11,7 +11,7 @@ import java.util.Set;
 public class Status  implements java.io.Serializable {
 
 
-     private byte stan;
+     private long stan;
      private String opis;
      private Set zlecenies = new HashSet(0);
 
@@ -29,7 +29,7 @@ public class Status  implements java.io.Serializable {
        this.zlecenies = zlecenies;
     }
    
-    public byte getStan() {
+    public long getStan() {
         return this.stan;
     }
     

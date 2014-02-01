@@ -75,6 +75,8 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTZlecenie = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
+        jTFUsuwane = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 300));
@@ -442,21 +444,39 @@ public class MajnOkienko extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADRES\t", "KOD POCZTOWY", "KONTRAHENT", "ŁADUNEK", "MODEL", "ODDZIAŁ", "POJAZD", "PRACOWNIK", "SALDO", "STATUS", "TYP TOWARU", "WYDATEK", "ZLECENIE", " " }));
 
+        jTFUsuwane.setText("ID usuwanego");
+
+        jButton2.setText("Usuń");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(488, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(564, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addContainerGap(535, Short.MAX_VALUE))
         );
 
         JTP.addTab("USUWANIE", jPanel1);
@@ -692,6 +712,102 @@ public class MajnOkienko extends javax.swing.JFrame {
         jBKodPocztowyWyswietlActionPerformed(null);
     }//GEN-LAST:event_jBKodPocztowyUsunUsunActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int wybor = jComboBox1.getSelectedIndex();
+        String idname = "";
+        long idnr = 0;
+        int ile = 0;
+        try
+        {
+            idnr = Long.parseLong(jTFUsuwane.getText());
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Nie usunięto rekordu.\n"+e.toString());
+            return;
+        }
+        try
+        {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            if(wybor==0)//adres
+            {
+                Query q = session.createQuery("delete Adres where idAdresu ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==1)//kod
+            {
+                Query q = session.createQuery("delete KodPocztowy where idKoduPoczt ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==2)//kontrahent
+            {
+                Query q = session.createQuery("delete Kontrahent where idKontrahenta ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==3)//ladunek
+            {
+                Query q = session.createQuery("delete Ladunek where idLadunku ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==4)//model
+            {
+                Query q = session.createQuery("delete Model where idModelu ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==5)//oddzial
+            {
+                Query q = session.createQuery("delete Oddzial where idInstytucji ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==6)//pojazd
+            {
+                Query q = session.createQuery("delete Pojazd where idPojazdu ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==7)//pracownik
+            {
+                Query q = session.createQuery("delete Pracownik where idPracownika ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==8)//saldo
+            {
+                Query q = session.createQuery("delete Saldo where idSalda ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==9)//status
+            {
+                Query q = session.createQuery("delete Status where stan ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==10)//typ
+            {
+                Query q = session.createQuery("delete TypTowaru where idTypu ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==11)//wydatek
+            {
+                Query q = session.createQuery("delete Wydatek where idWydatku ="+idnr);
+                ile = q.executeUpdate();
+            }
+            else if(wybor==12)//zlecenie
+            {
+                Query q = session.createQuery("delete Zlecenie where idZlecenia ="+idnr);
+                ile = q.executeUpdate();
+            }
+            session.getTransaction().commit();
+    }
+    catch(HibernateException e)
+    {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd komunikacji z bazą,\nNa przykłąd nie ma obiektu o takim ID\n"+e.toString());
+    }
+        if(ile ==1)
+            JOptionPane.showMessageDialog(null,"Usunięto pomyślnie");
+        else
+            JOptionPane.showMessageDialog(null,"Nic nie usunięto");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -751,6 +867,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jBKodPocztowyUsunUsun;
     private javax.swing.JButton jBKodPocztowyWyswietl;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -762,6 +879,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTFKodPocztowyDelete;
     private javax.swing.JTextField jTFKodPocztowyEdit;
+    private javax.swing.JTextField jTFUsuwane;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

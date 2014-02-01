@@ -5,7 +5,7 @@
   <class name="TypTowaru" schema="MURBANS4" table="TYP_TOWARU">
     <id name="idTypu" type="long">
       <column name="ID_TYPU" precision="10" scale="0"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="typ" type="string">
       <column length="30" name="TYP" not-null="true"/>
