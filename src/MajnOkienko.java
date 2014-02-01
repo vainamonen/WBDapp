@@ -60,8 +60,6 @@ public class MajnOkienko extends javax.swing.JFrame {
         jTFKodPocztowyEdit = new javax.swing.JTextField();
         jBKodPocztowyEditWczytaj = new javax.swing.JButton();
         jBKodPocztowyEditWstaw = new javax.swing.JButton();
-        jTFKodPocztowyDelete = new javax.swing.JTextField();
-        jBKodPocztowyUsunUsun = new javax.swing.JButton();
         JTKontrahent = new javax.swing.JPanel();
         JTLadunek = new javax.swing.JPanel();
         JTModel = new javax.swing.JPanel();
@@ -234,15 +232,6 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
         });
 
-        jTFKodPocztowyDelete.setText("ID usuwanego");
-
-        jBKodPocztowyUsunUsun.setText("Usuń");
-        jBKodPocztowyUsunUsun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBKodPocztowyUsunUsunActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout JTKodPocztowyLayout = new javax.swing.GroupLayout(JTKodPocztowy);
         JTKodPocztowy.setLayout(JTKodPocztowyLayout);
         JTKodPocztowyLayout.setHorizontalGroup(
@@ -258,43 +247,34 @@ public class MajnOkienko extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBKodPocztowyNewWstaw))
                     .addGroup(JTKodPocztowyLayout.createSequentialGroup()
-                        .addGroup(JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTFKodPocztowyDelete, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFKodPocztowyEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                        .addComponent(jTFKodPocztowyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(JTKodPocztowyLayout.createSequentialGroup()
-                                .addComponent(jBKodPocztowyEditWczytaj)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBKodPocztowyEditWstaw))
-                            .addComponent(jBKodPocztowyUsunUsun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jBKodPocztowyEditWczytaj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBKodPocztowyEditWstaw))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 19, Short.MAX_VALUE))
         );
         JTKodPocztowyLayout.setVerticalGroup(
             JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JTKodPocztowyLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBKodPocztowyWyswietl)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBKodPocztowyWyswietl)
+                .addGap(67, 67, 67)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBKodPocztowyNewNowy)
                     .addComponent(jBKodPocztowyNewWstaw))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFKodPocztowyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBKodPocztowyEditWczytaj)
                     .addComponent(jBKodPocztowyEditWstaw))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFKodPocztowyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBKodPocztowyUsunUsun))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         JTP.addTab("KOD POCZTOWY", JTKodPocztowy);
@@ -687,31 +667,6 @@ public class MajnOkienko extends javax.swing.JFrame {
         jBKodPocztowyWyswietlActionPerformed(null);
     }//GEN-LAST:event_jBKodPocztowyEditWstawActionPerformed
 
-    private void jBKodPocztowyUsunUsunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBKodPocztowyUsunUsunActionPerformed
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try
-        {
-            
-            long id = Long.parseLong(jTFKodPocztowyDelete.getText());
-            session.beginTransaction();
-            Query q = session.createQuery("delete KodPocztowy where idKoduPoczt ="+id);
-            q.executeUpdate();
-            //session.delete("from KodPocztowy where idKoduPoczt ="+id);
-        }
-        catch(HibernateException e)
-        {
-            JOptionPane.showMessageDialog(null, "Błąd obsługi bazy danych"+e.toString());
-            session.getTransaction().rollback();
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e.toString());
-            return;
-        }
-        session.getTransaction().commit();
-        jBKodPocztowyWyswietlActionPerformed(null);
-    }//GEN-LAST:event_jBKodPocztowyUsunUsunActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int wybor = jComboBox1.getSelectedIndex();
         String idname = "";
@@ -864,7 +819,6 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jBKodPocztowyEditWstaw;
     private javax.swing.JButton jBKodPocztowyNewNowy;
     private javax.swing.JButton jBKodPocztowyNewWstaw;
-    private javax.swing.JButton jBKodPocztowyUsunUsun;
     private javax.swing.JButton jBKodPocztowyWyswietl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -877,7 +831,6 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTFKodPocztowyDelete;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
     private javax.swing.JTextField jTextField1;
