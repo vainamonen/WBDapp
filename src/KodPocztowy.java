@@ -93,7 +93,10 @@ public class KodPocztowy  implements java.io.Serializable {
         //String[] newt = new String[]{"ID", "Kod pocztowy", "Miasto", "Adres"};
         return  result;
     }
-
+    public String toString()
+    {
+        return kodPocztowy + " " + miasto;
+    }
 
 }
 

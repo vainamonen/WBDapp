@@ -47,6 +47,9 @@ public class MajnOkienko extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         JTAdres = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTabAdresView = new javax.swing.JTable();
+        jBAdresWyswietl = new javax.swing.JButton();
         JTKodPocztowy = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabKodPocztowyView = new javax.swing.JTable();
@@ -138,15 +141,40 @@ public class MajnOkienko extends javax.swing.JFrame {
 
         JTP.addTab("LOGOWANIE", JTLogowanie);
 
+        jTabAdresView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTabAdresView);
+
+        jBAdresWyswietl.setText("Wyświetl");
+        jBAdresWyswietl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdresWyswietlActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTAdresLayout = new javax.swing.GroupLayout(JTAdres);
         JTAdres.setLayout(JTAdresLayout);
         JTAdresLayout.setHorizontalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jBAdresWyswietl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTAdresLayout.setVerticalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTAdresLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBAdresWyswietl)
+                .addGap(0, 362, Short.MAX_VALUE))
         );
 
         JTP.addTab("ADRES", JTAdres);
@@ -763,6 +791,45 @@ public class MajnOkienko extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Nic nie usunięto");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jBAdresWyswietlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdresWyswietlActionPerformed
+        String query = "from Adres";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Adres.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Adres foteczka = (Adres)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdAdresu());
+        oneRow.add(foteczka.getKodPocztowy());
+        oneRow.add(foteczka.getUlica());
+        oneRow.add(foteczka.getNrDomu());
+        oneRow.add(foteczka.getNrLokalu());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabAdresView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBAdresWyswietlActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -815,6 +882,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JTable JTabKodPocztowyEdit;
     private javax.swing.JTable JTabKodPocztowyNew;
     private javax.swing.JTable JTabKodPocztowyView;
+    private javax.swing.JButton jBAdresWyswietl;
     private javax.swing.JButton jBKodPocztowyEditWczytaj;
     private javax.swing.JButton jBKodPocztowyEditWstaw;
     private javax.swing.JButton jBKodPocztowyNewNowy;
@@ -829,10 +897,12 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
+    private javax.swing.JTable jTabAdresView;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
