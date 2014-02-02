@@ -105,10 +105,10 @@ public class Pojazd  implements java.io.Serializable {
      @Override
     public String toString()
     {
-        return model + " " + numerRejestracyjny + " " + dataPrzegladu + " " + dataProdukcji;
+        return  numerRejestracyjny + " " + model; // + " " + dataPrzegladu + " " + dataProdukcji;
     }
     
-    public boolean verify(String numerRejestracyjny)
+    public static boolean verify(String numerRejestracyjny)
     {
         try 
         {

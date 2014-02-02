@@ -125,7 +125,7 @@ public class Model  implements java.io.Serializable {
 
     public String toString()
     {
-        return typTowaru + " " + model + " " + marka + " " + koszt + " " + predkosc + " " + ladownosc;
+        return model + " " + marka + " " /*+ typTowaru + " " + koszt + " " + predkosc + " " + ladownosc*/;
     }
 
 

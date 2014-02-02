@@ -63,7 +63,6 @@ public class AdresAddAndEdit extends javax.swing.JFrame {
 
         jLabel1.setText("Wybierz czynność");
 
-        jBCWybierzKod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jBCWybierzKod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCWybierzKodActionPerformed(evt);
@@ -171,14 +170,14 @@ public class AdresAddAndEdit extends javax.swing.JFrame {
             {
                 try 
                 {
-                    Session session = HibernateUtil.getSessionFactory().openSession();
+                    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
                     session.beginTransaction();
                     Query q = session.createQuery(query);
                     List resultList = q.list();
                     //displayResult(resultList);
                     session.getTransaction().commit();
                     //List<KodPocztowy> kody = new ArrayList<>();
-                    session.close();
+                    //session.close();
                     jBCWybierzAdres.removeAllItems();
                     jBCWybierzAdres.setEnabled(true);
                     for(Object o : resultList) 
@@ -248,12 +247,12 @@ public class AdresAddAndEdit extends javax.swing.JFrame {
                 adr.setKodPocztowy((KodPocztowy)jBCWybierzKod.getSelectedItem());
             }
             
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
 
             session.saveOrUpdate(adr);
             session.getTransaction().commit();
-            session.close();
+            //session.close();
 
             
         }
@@ -276,14 +275,14 @@ public class AdresAddAndEdit extends javax.swing.JFrame {
         {
             try 
             {
-                Session session = HibernateUtil.getSessionFactory().openSession();
+                Session session = HibernateUtil.getSessionFactory().getCurrentSession();
                 session.beginTransaction();
                 Query q = session.createQuery(query);
                 List resultList = q.list();
                 //displayResult(resultList);
                 session.getTransaction().commit();
                 //List<KodPocztowy> kody = new ArrayList<>();
-                session.close();
+                //session.close();
                 jBCWybierzKod.removeAllItems();
                 for(Object o : resultList) 
                 {

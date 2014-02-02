@@ -639,6 +639,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane9" pref="708" max="32767" attributes="0"/>
                   <Component id="jBPojazdView" alignment="0" max="32767" attributes="0"/>
+                  <Component id="dupa" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -647,7 +648,9 @@
                       <Component id="jScrollPane9" min="-2" pref="256" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBPojazdView" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="310" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="dupa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -680,6 +683,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPojazdViewActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="dupa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Otw&#xf3;rz okno dodawania/edycji"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dupaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

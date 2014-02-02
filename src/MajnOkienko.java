@@ -83,6 +83,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTabPojazdView = new javax.swing.JTable();
         jBPojazdView = new javax.swing.JButton();
+        dupa = new javax.swing.JButton();
         JTPracownik = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTabPracownikView = new javax.swing.JTable();
@@ -524,12 +525,20 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
         });
 
+        dupa.setText("Otwórz okno dodawania/edycji");
+        dupa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dupaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTPojazdLayout = new javax.swing.GroupLayout(JTPojazd);
         JTPojazd.setLayout(JTPojazdLayout);
         JTPojazdLayout.setHorizontalGroup(
             JTPojazdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addComponent(jBPojazdView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dupa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTPojazdLayout.setVerticalGroup(
             JTPojazdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,7 +546,9 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBPojazdView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dupa)
+                .addGap(0, 281, Short.MAX_VALUE))
         );
 
         JTP.addTab("POJAZD", JTPojazd);
@@ -903,7 +914,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = KodPocztowy.getKolumny();
         Vector tableData = new Vector();
         
@@ -919,7 +930,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     JTabKodPocztowyView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -968,7 +979,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         session.save(new KodPocztowy(id,kod,miasto));
         session.getTransaction().commit();
         jBKodPocztowyWyswietlActionPerformed(null);
-        session.close();
+        //session.close();
     }//GEN-LAST:event_jBKodPocztowyNewWstawActionPerformed
 
     private void jTFKodPocztowyEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFKodPocztowyEditActionPerformed
@@ -996,7 +1007,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = KodPocztowy.getKolumny();
         Vector tableData = new Vector();
         
@@ -1012,7 +1023,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     JTabKodPocztowyEdit.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1037,7 +1048,7 @@ public class MajnOkienko extends javax.swing.JFrame {
 
             session.update(new KodPocztowy(id,kod,miasto));
             session.getTransaction().commit();
-            session.close();
+            //session.close();
         }
         catch(Exception e)
         {
@@ -1133,7 +1144,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 ile = q.executeUpdate();
             }
             session.getTransaction().commit();
-            session.close();
+            //session.close();
     }
     catch(HibernateException e)
     {
@@ -1148,14 +1159,15 @@ public class MajnOkienko extends javax.swing.JFrame {
     private void jBAdresWyswietlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdresWyswietlActionPerformed
         String query = "from Adres";
        {
+           Session session = HibernateUtil.getSessionFactory().openSession();
            try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        
         session.beginTransaction();
         Query q = session.createQuery(query);
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Adres.getKolumny();
         Vector tableData = new Vector();
         
@@ -1178,11 +1190,13 @@ public class MajnOkienko extends javax.swing.JFrame {
        //all cells false
        return false;
     }});
+    //session.close();
     //jTabAdresView.getColumnModel().getColumn(0).setPreferredWidth(6);
     } catch (HibernateException he) {
         JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
         //he.printStackTrace();
     }
+           
        }
     }//GEN-LAST:event_jBAdresWyswietlActionPerformed
 
@@ -1196,7 +1210,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Kontrahent.getKolumny();
         Vector tableData = new Vector();
         
@@ -1216,7 +1230,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabKontrahentView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1239,7 +1253,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Ladunek.getKolumny();
         Vector tableData = new Vector();
         
@@ -1258,7 +1272,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabLadunekView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1281,7 +1295,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Model.getKolumny();
         Vector tableData = new Vector();
         
@@ -1306,7 +1320,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabModelView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1329,7 +1343,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Oddzial.getKolumny();
         Vector tableData = new Vector();
         
@@ -1346,7 +1360,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabOddzialView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1369,7 +1383,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Pojazd.getKolumny();
         Vector tableData = new Vector();
         
@@ -1390,7 +1404,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabPojazdView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1413,7 +1427,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Pracownik.getKolumny();
         Vector tableData = new Vector();
         
@@ -1447,7 +1461,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         oneRow.add(foteczka.getPensja());
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabPracownikView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1470,7 +1484,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Saldo.getKolumny();
         Vector tableData = new Vector();
         
@@ -1491,7 +1505,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabSaldoView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1514,7 +1528,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Status.getKolumny();
         Vector tableData = new Vector();
         
@@ -1528,7 +1542,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabStatusView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1551,7 +1565,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = TypTowaru.getKolumny();
         Vector tableData = new Vector();
         
@@ -1565,7 +1579,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabTypTowaruView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1588,7 +1602,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Wydatek.getKolumny();
         Vector tableData = new Vector();
         
@@ -1609,7 +1623,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabWydatekView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1632,7 +1646,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
-        session.close();
+        
         Vector<String> tableHeaders = Zlecenie.getKolumny();
         Vector tableData = new Vector();
         
@@ -1667,7 +1681,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 
         tableData.addElement(oneRow);
     }
-    
+    //session.close();
     jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
         public boolean isCellEditable(int row, int column) {
        //all cells false
@@ -1686,11 +1700,25 @@ public class MajnOkienko extends javax.swing.JFrame {
                 new AdresAddAndEdit().setVisible(true);
             }
     }//GEN-LAST:event_jBAdresModyfikacjaActionPerformed
+/*
+    private void dupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dupaActionPerformed
+/*          */                                                              );
+    }///koniec
+    private void dupaActionPerformed(java.awt.event.ActionEvent evt)
+    {                                         
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run()
+            {
+                new PojazdAddAndEdit().setVisible(true);
+            }
+        }
         );
-    }
-    /**
-     * @param args the command line arguments
-     */
+    }   
+    
+    
     public static void main(String args[]) throws java.lang.InstantiationException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1740,6 +1768,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JTable JTabKodPocztowyEdit;
     private javax.swing.JTable JTabKodPocztowyNew;
     private javax.swing.JTable JTabKodPocztowyView;
+    private javax.swing.JButton dupa;
     private javax.swing.JButton jBAdresModyfikacja;
     private javax.swing.JButton jBAdresWyswietl;
     private javax.swing.JButton jBKodPocztowyEditWczytaj;
