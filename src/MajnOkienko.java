@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
 //import tabelki.KodPocztowy;
@@ -47,9 +46,9 @@ public class MajnOkienko extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         JTAdres = new javax.swing.JPanel();
+        jBAdresWyswietl = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabAdresView = new javax.swing.JTable();
-        jBAdresWyswietl = new javax.swing.JButton();
         JTKodPocztowy = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabKodPocztowyView = new javax.swing.JTable();
@@ -68,26 +67,60 @@ public class MajnOkienko extends javax.swing.JFrame {
         jTabKontrahentView = new javax.swing.JTable();
         jBKontrahentView = new javax.swing.JButton();
         JTLadunek = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTabLadunekView = new javax.swing.JTable();
+        jBLadunekView = new javax.swing.JButton();
         JTModel = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTabModelView = new javax.swing.JTable();
+        jBModelView = new javax.swing.JButton();
         JTOddzial = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTabOddzialView = new javax.swing.JTable();
+        jBOddzialView = new javax.swing.JButton();
         JTPojazd = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTabPojazdView = new javax.swing.JTable();
+        jBPojazdView = new javax.swing.JButton();
         JTPracownik = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTabPracownikView = new javax.swing.JTable();
+        jBPracownikView = new javax.swing.JButton();
         JTSaldo = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTabSaldoView = new javax.swing.JTable();
+        jBSaldoView = new javax.swing.JButton();
         JTStatus = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTabStatusView = new javax.swing.JTable();
+        jBStatusView = new javax.swing.JButton();
         JTTypTowaru = new javax.swing.JPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTabTypTowaruView = new javax.swing.JTable();
+        jBTypTowaruView = new javax.swing.JButton();
         JTWydatek = new javax.swing.JPanel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTabWydatekView = new javax.swing.JTable();
+        jBWydatekView = new javax.swing.JButton();
         JTZlecenie = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTabZlecenieView = new javax.swing.JTable();
+        jBZlecenieView = new javax.swing.JButton();
+        jTUsuwanie = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jTFUsuwane = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(500, 300));
+        setTitle("Spedytor");
+        setMinimumSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(1000, 850));
 
         JTP.setBackground(new java.awt.Color(255, 153, 0));
+        JTP.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         JTP.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         JTP.setDoubleBuffered(true);
+        JTP.setMinimumSize(new java.awt.Dimension(800, 600));
 
         jPasswordField1.setText("Hasło");
 
@@ -112,17 +145,16 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(JTLogowanieLayout.createSequentialGroup()
-                            .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))))
-                .addContainerGap(450, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(JTLogowanieLayout.createSequentialGroup()
+                        .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
         JTLogowanieLayout.setVerticalGroup(
             JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,6 +176,13 @@ public class MajnOkienko extends javax.swing.JFrame {
 
         JTP.addTab("LOGOWANIE", JTLogowanie);
 
+        jBAdresWyswietl.setText("Wyświetl");
+        jBAdresWyswietl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdresWyswietlActionPerformed(evt);
+            }
+        });
+
         jTabAdresView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -157,27 +196,20 @@ public class MajnOkienko extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTabAdresView);
 
-        jBAdresWyswietl.setText("Wyświetl");
-        jBAdresWyswietl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAdresWyswietlActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout JTAdresLayout = new javax.swing.GroupLayout(JTAdres);
         JTAdres.setLayout(JTAdresLayout);
         JTAdresLayout.setHorizontalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addComponent(jBAdresWyswietl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTAdresLayout.setVerticalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JTAdresLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBAdresWyswietl)
-                .addGap(0, 362, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         JTP.addTab("ADRES", JTAdres);
@@ -282,14 +314,14 @@ public class MajnOkienko extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBKodPocztowyEditWczytaj)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBKodPocztowyEditWstaw))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 19, Short.MAX_VALUE))
+                        .addComponent(jBKodPocztowyEditWstaw)))
+                .addGap(0, 454, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         JTKodPocztowyLayout.setVerticalGroup(
             JTKodPocztowyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JTKodPocztowyLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBKodPocztowyWyswietl)
                 .addGap(67, 67, 67)
@@ -305,7 +337,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                     .addComponent(jTFKodPocztowyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBKodPocztowyEditWczytaj)
                     .addComponent(jBKodPocztowyEditWstaw))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         JTP.addTab("KOD POCZTOWY", JTKodPocztowy);
@@ -334,146 +366,396 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTKontrahent.setLayout(JTKontrahentLayout);
         JTKontrahentLayout.setHorizontalGroup(
             JTKontrahentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addComponent(jBKontrahentView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTKontrahentLayout.setVerticalGroup(
             JTKontrahentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JTKontrahentLayout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBKontrahentView)
-                .addGap(0, 254, Short.MAX_VALUE))
+                .addGap(0, 311, Short.MAX_VALUE))
         );
 
         JTP.addTab("KONTRAHENT", JTKontrahent);
+
+        jTabLadunekView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTabLadunekView);
+
+        jBLadunekView.setText("Wyświetl");
+        jBLadunekView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLadunekViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTLadunekLayout = new javax.swing.GroupLayout(JTLadunek);
         JTLadunek.setLayout(JTLadunekLayout);
         JTLadunekLayout.setHorizontalGroup(
             JTLadunekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBLadunekView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTLadunekLayout.setVerticalGroup(
             JTLadunekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTLadunekLayout.createSequentialGroup()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBLadunekView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("ŁADUNEK", JTLadunek);
+
+        jTabModelView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTabModelView);
+
+        jBModelView.setText("Wyświetl");
+        jBModelView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModelViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTModelLayout = new javax.swing.GroupLayout(JTModel);
         JTModel.setLayout(JTModelLayout);
         JTModelLayout.setHorizontalGroup(
             JTModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBModelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTModelLayout.setVerticalGroup(
             JTModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTModelLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBModelView)
+                .addGap(0, 308, Short.MAX_VALUE))
         );
 
         JTP.addTab("MODEL", JTModel);
+
+        jTabOddzialView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane8.setViewportView(jTabOddzialView);
+
+        jBOddzialView.setText("Wyświetl");
+        jBOddzialView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOddzialViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTOddzialLayout = new javax.swing.GroupLayout(JTOddzial);
         JTOddzial.setLayout(JTOddzialLayout);
         JTOddzialLayout.setHorizontalGroup(
             JTOddzialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBOddzialView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTOddzialLayout.setVerticalGroup(
             JTOddzialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTOddzialLayout.createSequentialGroup()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBOddzialView)
+                .addGap(0, 311, Short.MAX_VALUE))
         );
 
         JTP.addTab("ODDZIAŁ", JTOddzial);
+
+        jTabPojazdView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane9.setViewportView(jTabPojazdView);
+
+        jBPojazdView.setText("Wyświetl");
+        jBPojazdView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPojazdViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTPojazdLayout = new javax.swing.GroupLayout(JTPojazd);
         JTPojazd.setLayout(JTPojazdLayout);
         JTPojazdLayout.setHorizontalGroup(
             JTPojazdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBPojazdView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTPojazdLayout.setVerticalGroup(
             JTPojazdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTPojazdLayout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBPojazdView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("POJAZD", JTPojazd);
+
+        jTabPracownikView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane10.setViewportView(jTabPracownikView);
+
+        jBPracownikView.setText("Wyświetl");
+        jBPracownikView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPracownikViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTPracownikLayout = new javax.swing.GroupLayout(JTPracownik);
         JTPracownik.setLayout(JTPracownikLayout);
         JTPracownikLayout.setHorizontalGroup(
             JTPracownikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBPracownikView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTPracownikLayout.setVerticalGroup(
             JTPracownikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTPracownikLayout.createSequentialGroup()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBPracownikView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("PRACOWNIK", JTPracownik);
+
+        jTabSaldoView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane11.setViewportView(jTabSaldoView);
+
+        jBSaldoView.setText("Wyświetl");
+        jBSaldoView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSaldoViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTSaldoLayout = new javax.swing.GroupLayout(JTSaldo);
         JTSaldo.setLayout(JTSaldoLayout);
         JTSaldoLayout.setHorizontalGroup(
             JTSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBSaldoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTSaldoLayout.setVerticalGroup(
             JTSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTSaldoLayout.createSequentialGroup()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBSaldoView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("SALDO", JTSaldo);
+
+        jTabStatusView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane12.setViewportView(jTabStatusView);
+
+        jBStatusView.setText("Wyświetl");
+        jBStatusView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBStatusViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTStatusLayout = new javax.swing.GroupLayout(JTStatus);
         JTStatus.setLayout(JTStatusLayout);
         JTStatusLayout.setHorizontalGroup(
             JTStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBStatusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTStatusLayout.setVerticalGroup(
             JTStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTStatusLayout.createSequentialGroup()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBStatusView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("STATUS", JTStatus);
+
+        jTabTypTowaruView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane13.setViewportView(jTabTypTowaruView);
+
+        jBTypTowaruView.setText("Wyświetl");
+        jBTypTowaruView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTypTowaruViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTTypTowaruLayout = new javax.swing.GroupLayout(JTTypTowaru);
         JTTypTowaru.setLayout(JTTypTowaruLayout);
         JTTypTowaruLayout.setHorizontalGroup(
             JTTypTowaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBTypTowaruView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTTypTowaruLayout.setVerticalGroup(
             JTTypTowaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTTypTowaruLayout.createSequentialGroup()
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBTypTowaruView)
+                .addGap(0, 309, Short.MAX_VALUE))
         );
 
         JTP.addTab("TYP TOWARU", JTTypTowaru);
+
+        jTabWydatekView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane14.setViewportView(jTabWydatekView);
+
+        jBWydatekView.setText("Wyświetl");
+        jBWydatekView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBWydatekViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTWydatekLayout = new javax.swing.GroupLayout(JTWydatek);
         JTWydatek.setLayout(JTWydatekLayout);
         JTWydatekLayout.setHorizontalGroup(
             JTWydatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBWydatekView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTWydatekLayout.setVerticalGroup(
             JTWydatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTWydatekLayout.createSequentialGroup()
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBWydatekView)
+                .addGap(0, 311, Short.MAX_VALUE))
         );
 
         JTP.addTab("WYDATEK", JTWydatek);
+
+        jTabZlecenieView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane15.setViewportView(jTabZlecenieView);
+
+        jBZlecenieView.setText("Wyświetl");
+        jBZlecenieView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBZlecenieViewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JTZlecenieLayout = new javax.swing.GroupLayout(JTZlecenie);
         JTZlecenie.setLayout(JTZlecenieLayout);
         JTZlecenieLayout.setHorizontalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jBZlecenieView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTZlecenieLayout.setVerticalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTZlecenieLayout.createSequentialGroup()
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBZlecenieView)
+                .addGap(0, 310, Short.MAX_VALUE))
         );
 
         JTP.addTab("ZLECENIE", JTZlecenie);
@@ -489,33 +771,33 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jTUsuwanieLayout = new javax.swing.GroupLayout(jTUsuwanie);
+        jTUsuwanie.setLayout(jTUsuwanieLayout);
+        jTUsuwanieLayout.setHorizontalGroup(
+            jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTUsuwanieLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jTUsuwanieLayout.createSequentialGroup()
                         .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(488, Short.MAX_VALUE))
+                .addContainerGap(498, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jTUsuwanieLayout.setVerticalGroup(
+            jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTUsuwanieLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addContainerGap(535, Short.MAX_VALUE))
         );
 
-        JTP.addTab("USUWANIE", jPanel1);
+        JTP.addTab("USUWANIE", jTUsuwanie);
 
         JTP.setSelectedComponent(JTLogowanie);
 
@@ -523,13 +805,11 @@ public class MajnOkienko extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(JTP, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -542,7 +822,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         Map<String, String> users= new HashMap<>();
         users.put("admin", "admin");
         users.put("flota", "flota");
-        users.put("kadra", "kadra");
+        users.put("zlecenie", "zlecenie");
         users.put("szef", "szef");
         String res = users.get(log);
         if( res == null)
@@ -555,9 +835,42 @@ public class MajnOkienko extends javax.swing.JFrame {
         {
             if(res.equals(pass))
             {
+                
+                
                 jLabel3.setText("Zalogowano");
                 jLabel3.setForeground(Color.green);
+                //wczytywanie wszystkiego z bazy
+                jBAdresWyswietlActionPerformed(evt);
+                jBKodPocztowyWyswietlActionPerformed(evt);
+                jBKontrahentViewActionPerformed(evt);
+                jBLadunekViewActionPerformed(evt);
+                jBModelViewActionPerformed(evt);
+                jBOddzialViewActionPerformed(evt);
+                jBPojazdViewActionPerformed(evt);
+                jBPracownikViewActionPerformed(evt);
+                jBSaldoViewActionPerformed(evt);
+                jBStatusViewActionPerformed(evt);
+                jBTypTowaruViewActionPerformed(evt);
+                jBWydatekViewActionPerformed(evt);
+                jBZlecenieViewActionPerformed(evt);
                 JTP.setEnabled(true);
+                if(res.equals("admin"))
+                {
+                    //wszystko
+                }
+                else if(res.equals("flota"))
+                {
+                    //tylko zarządzenie pojazdami i encjami podrzędnymi
+                }
+                else if(res.equals("zlecenie"))
+                {
+                    //tylko zlecenia
+                }
+                else if(res.equals("szef"))
+                {
+                    //wyłączyć całą edycję, może tylko oglądać
+                }
+                
             }
             else
             {
@@ -849,6 +1162,7 @@ public class MajnOkienko extends javax.swing.JFrame {
        //all cells false
        return false;
     }});
+    //jTabAdresView.getColumnModel().getColumn(0).setPreferredWidth(6);
     } catch (HibernateException he) {
         JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
         //he.printStackTrace();
@@ -897,6 +1211,447 @@ public class MajnOkienko extends javax.swing.JFrame {
     }
        }
     }//GEN-LAST:event_jBKontrahentViewActionPerformed
+
+    private void jBLadunekViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLadunekViewActionPerformed
+        String query = "from Ladunek";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Ladunek.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Ladunek foteczka = (Ladunek)o;
+        /* private long idLadunku;
+     private TypTowaru typTowaru;
+     private String nazwa;
+     private long ilosc;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdLadunku());
+        oneRow.add(foteczka.getTypTowaru());
+        oneRow.add(foteczka.getNazwa());
+        oneRow.add(foteczka.getIlosc());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabLadunekView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBLadunekViewActionPerformed
+
+    private void jBModelViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModelViewActionPerformed
+        String query = "from Model";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Model.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Model foteczka = (Model)o;
+        /*private long idModelu;
+     private TypTowaru typTowaru;
+     private String model;
+     private String marka;
+     private BigDecimal koszt;
+     private BigDecimal predkosc;
+     private long ladownosc;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdModelu());
+        oneRow.add(foteczka.getTypTowaru());
+        oneRow.add(foteczka.getModel());
+        oneRow.add(foteczka.getMarka());
+        oneRow.add(foteczka.getKoszt());
+        oneRow.add(foteczka.getPredkosc());
+        oneRow.add(foteczka.getLadownosc());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabModelView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBModelViewActionPerformed
+
+    private void jBOddzialViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOddzialViewActionPerformed
+        String query = "from Oddzial";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Oddzial.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Oddzial foteczka = (Oddzial)o;
+        /*private long idInstytucji;
+     private Adres adres;
+     private String nazwaInstytucji;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdInstytucji());
+        oneRow.add(foteczka.getAdres());
+        oneRow.add(foteczka.getNazwaInstytucji());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabOddzialView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBOddzialViewActionPerformed
+
+    private void jBPojazdViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPojazdViewActionPerformed
+        String query = "from Pojazd";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Pojazd.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Pojazd foteczka = (Pojazd)o;
+        /*private long idPojazdu;
+     private Model model;
+     private String numerRejestracyjny;
+     private Date dataPrzegladu;
+     private Date dataProdukcji;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdPojazdu());
+        oneRow.add(foteczka.getModel());
+        oneRow.add(foteczka.getNumerRejestracyjny());
+        oneRow.add(foteczka.getDataPrzegladu());
+        oneRow.add(foteczka.getDataProdukcji());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabPojazdView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBPojazdViewActionPerformed
+
+    private void jBPracownikViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPracownikViewActionPerformed
+        String query = "from Pracownik";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Pracownik.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Pracownik foteczka = (Pracownik)o;
+        /*private long idPracownika;
+     private Adres adres;
+     private Oddzial oddzial;
+     private String pesel;
+     private String imie;
+     private String imie2;
+     private String nazwisko;
+     private Date dataUrodzenia;
+     private String stanowisko;
+     private String telefon;
+     private String status;
+     private BigDecimal pensja;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdPracownika());
+        oneRow.add(foteczka.getAdres());
+        oneRow.add(foteczka.getOddzial());
+        oneRow.add(foteczka.getPesel());
+        oneRow.add(foteczka.getImie());
+        oneRow.add(foteczka.getImie2());
+        oneRow.add(foteczka.getNazwisko());
+        oneRow.add(foteczka.getDataUrodzenia());
+        oneRow.add(foteczka.getStanowisko());
+        oneRow.add(foteczka.getTelefon());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getPensja());
+        tableData.addElement(oneRow);
+    }
+    
+    jTabPracownikView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBPracownikViewActionPerformed
+
+    private void jBSaldoViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaldoViewActionPerformed
+        String query = "from Saldo";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Saldo.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Saldo foteczka = (Saldo)o;
+        /* private long idSalda;
+     private Oddzial oddzial;
+     private BigDecimal kwota;
+     private String informacje;
+     private Date dataFaktury;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdSalda());
+        oneRow.add(foteczka.getOddzial());
+        oneRow.add(foteczka.getKwota());
+        oneRow.add(foteczka.getInformacje());
+        oneRow.add(foteczka.getDataFaktury());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabSaldoView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBSaldoViewActionPerformed
+
+    private void jBStatusViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStatusViewActionPerformed
+        String query = "from Status";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Status.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Status foteczka = (Status)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getStan());
+        oneRow.add(foteczka.getOpis());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabStatusView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBStatusViewActionPerformed
+
+    private void jBTypTowaruViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTypTowaruViewActionPerformed
+        String query = "from TypTowaru";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = TypTowaru.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        TypTowaru foteczka = (TypTowaru)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdTypu());
+        oneRow.add(foteczka.getTyp());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabTypTowaruView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBTypTowaruViewActionPerformed
+
+    private void jBWydatekViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBWydatekViewActionPerformed
+        String query = "from Wydatek";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Wydatek.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Wydatek foteczka = (Wydatek)o;
+        /* private long idWydatku;
+     private Oddzial oddzial;
+     private BigDecimal kwota;
+     private Date dataWydarzenia;
+     private String opis;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdWydatku());
+        oneRow.add(foteczka.getOddzial());
+        oneRow.add(foteczka.getKwota());
+        oneRow.add(foteczka.getDataWydarzenia());
+        oneRow.add(foteczka.getOpis());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabWydatekView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBWydatekViewActionPerformed
+
+    private void jBZlecenieViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBZlecenieViewActionPerformed
+        String query = "from Zlecenie";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Zlecenie.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Zlecenie foteczka = (Zlecenie)o;
+        /*private BigDecimal idZlecenia;
+     private Pojazd pojazd;
+     private Adres adresByIdMety;
+     private Adres adresByIdStartu;
+     private Ladunek ladunek;
+     private Pracownik pracownik;
+     private Status status;
+     private Kontrahent kontrahent;
+     private BigDecimal wartosc;
+     private BigDecimal odleglosc;
+     private Date dataPrzyjZlec;
+     private Date dataZakZlec;*/
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdZlecenia());
+        oneRow.add(foteczka.getPojazd());
+        oneRow.add(foteczka.getAdresByIdMety());
+        oneRow.add(foteczka.getAdresByIdStartu());
+        oneRow.add(foteczka.getLadunek());
+        oneRow.add(foteczka.getPracownik());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getKontrahent());
+        oneRow.add(foteczka.getWartosc());
+        oneRow.add(foteczka.getOdleglosc());
+        oneRow.add(foteczka.getDataPrzyjZlec());
+        oneRow.add(foteczka.getDataZakZlec());
+                
+        tableData.addElement(oneRow);
+    }
+    
+    jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBZlecenieViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -957,23 +1712,53 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jBKodPocztowyNewWstaw;
     private javax.swing.JButton jBKodPocztowyWyswietl;
     private javax.swing.JButton jBKontrahentView;
+    private javax.swing.JButton jBLadunekView;
+    private javax.swing.JButton jBModelView;
+    private javax.swing.JButton jBOddzialView;
+    private javax.swing.JButton jBPojazdView;
+    private javax.swing.JButton jBPracownikView;
+    private javax.swing.JButton jBSaldoView;
+    private javax.swing.JButton jBStatusView;
+    private javax.swing.JButton jBTypTowaruView;
+    private javax.swing.JButton jBWydatekView;
+    private javax.swing.JButton jBZlecenieView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
+    private javax.swing.JPanel jTUsuwanie;
     private javax.swing.JTable jTabAdresView;
     private javax.swing.JTable jTabKontrahentView;
+    private javax.swing.JTable jTabLadunekView;
+    private javax.swing.JTable jTabModelView;
+    private javax.swing.JTable jTabOddzialView;
+    private javax.swing.JTable jTabPojazdView;
+    private javax.swing.JTable jTabPracownikView;
+    private javax.swing.JTable jTabSaldoView;
+    private javax.swing.JTable jTabStatusView;
+    private javax.swing.JTable jTabTypTowaruView;
+    private javax.swing.JTable jTabWydatekView;
+    private javax.swing.JTable jTabZlecenieView;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

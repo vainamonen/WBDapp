@@ -157,7 +157,7 @@ public class Adres  implements java.io.Serializable {
 
     public String toString()
     {
-        return kodPocztowy + " " + ulica + " " + nrDomu + " " + nrLokalu;
+        return ulica + " " + nrDomu + " " + nrLokalu;
     }
 
 }
