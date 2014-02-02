@@ -64,6 +64,9 @@ public class MajnOkienko extends javax.swing.JFrame {
         jBKodPocztowyEditWczytaj = new javax.swing.JButton();
         jBKodPocztowyEditWstaw = new javax.swing.JButton();
         JTKontrahent = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTabKontrahentView = new javax.swing.JTable();
+        jBKontrahentView = new javax.swing.JButton();
         JTLadunek = new javax.swing.JPanel();
         JTModel = new javax.swing.JPanel();
         JTOddzial = new javax.swing.JPanel();
@@ -307,15 +310,40 @@ public class MajnOkienko extends javax.swing.JFrame {
 
         JTP.addTab("KOD POCZTOWY", JTKodPocztowy);
 
+        jTabKontrahentView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTabKontrahentView);
+
+        jBKontrahentView.setText("Wyświetl");
+        jBKontrahentView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBKontrahentViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTKontrahentLayout = new javax.swing.GroupLayout(JTKontrahent);
         JTKontrahent.setLayout(JTKontrahentLayout);
         JTKontrahentLayout.setHorizontalGroup(
             JTKontrahentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jBKontrahentView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTKontrahentLayout.setVerticalGroup(
             JTKontrahentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(JTKontrahentLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(jBKontrahentView)
+                .addGap(0, 254, Short.MAX_VALUE))
         );
 
         JTP.addTab("KONTRAHENT", JTKontrahent);
@@ -495,9 +523,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -830,6 +856,48 @@ public class MajnOkienko extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jBAdresWyswietlActionPerformed
 
+    private void jBKontrahentViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBKontrahentViewActionPerformed
+         String query = "from Kontrahent";
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        Vector<String> tableHeaders = Kontrahent.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Kontrahent foteczka = (Kontrahent)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdKontrahenta());
+        oneRow.add(foteczka.getAdres());
+        oneRow.add(foteczka.getNip());
+        oneRow.add(foteczka.getRegon());
+        oneRow.add(foteczka.getNazwa());
+        oneRow.add(foteczka.getTelefon());
+        oneRow.add(foteczka.getEMail());
+        oneRow.add(foteczka.getOpis());
+        
+        tableData.addElement(oneRow);
+    }
+    
+    jTabKontrahentView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }//GEN-LAST:event_jBKontrahentViewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -888,6 +956,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jBKodPocztowyNewNowy;
     private javax.swing.JButton jBKodPocztowyNewWstaw;
     private javax.swing.JButton jBKodPocztowyWyswietl;
+    private javax.swing.JButton jBKontrahentView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
@@ -900,9 +969,11 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
     private javax.swing.JTable jTabAdresView;
+    private javax.swing.JTable jTabKontrahentView;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
