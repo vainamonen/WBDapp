@@ -115,7 +115,6 @@ public class MajnOkienko extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Spedytor");
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(1000, 850));
 
         JTP.setBackground(new java.awt.Color(255, 153, 0));
         JTP.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -904,6 +903,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = KodPocztowy.getKolumny();
         Vector tableData = new Vector();
         
@@ -968,6 +968,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         session.save(new KodPocztowy(id,kod,miasto));
         session.getTransaction().commit();
         jBKodPocztowyWyswietlActionPerformed(null);
+        session.close();
     }//GEN-LAST:event_jBKodPocztowyNewWstawActionPerformed
 
     private void jTFKodPocztowyEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFKodPocztowyEditActionPerformed
@@ -995,6 +996,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = KodPocztowy.getKolumny();
         Vector tableData = new Vector();
         
@@ -1035,6 +1037,7 @@ public class MajnOkienko extends javax.swing.JFrame {
 
             session.update(new KodPocztowy(id,kod,miasto));
             session.getTransaction().commit();
+            session.close();
         }
         catch(Exception e)
         {
@@ -1130,6 +1133,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 ile = q.executeUpdate();
             }
             session.getTransaction().commit();
+            session.close();
     }
     catch(HibernateException e)
     {
@@ -1151,6 +1155,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Adres.getKolumny();
         Vector tableData = new Vector();
         
@@ -1191,6 +1196,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Kontrahent.getKolumny();
         Vector tableData = new Vector();
         
@@ -1233,6 +1239,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Ladunek.getKolumny();
         Vector tableData = new Vector();
         
@@ -1274,6 +1281,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Model.getKolumny();
         Vector tableData = new Vector();
         
@@ -1321,6 +1329,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Oddzial.getKolumny();
         Vector tableData = new Vector();
         
@@ -1360,6 +1369,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Pojazd.getKolumny();
         Vector tableData = new Vector();
         
@@ -1403,6 +1413,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Pracownik.getKolumny();
         Vector tableData = new Vector();
         
@@ -1459,6 +1470,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Saldo.getKolumny();
         Vector tableData = new Vector();
         
@@ -1502,6 +1514,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Status.getKolumny();
         Vector tableData = new Vector();
         
@@ -1538,6 +1551,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = TypTowaru.getKolumny();
         Vector tableData = new Vector();
         
@@ -1574,6 +1588,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Wydatek.getKolumny();
         Vector tableData = new Vector();
         
@@ -1617,6 +1632,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         List resultList = q.list();
         //displayResult(resultList);
         session.getTransaction().commit();
+        session.close();
         Vector<String> tableHeaders = Zlecenie.getKolumny();
         Vector tableData = new Vector();
         
