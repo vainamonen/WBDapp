@@ -49,6 +49,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         jBAdresWyswietl = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabAdresView = new javax.swing.JTable();
+        jBAdresModyfikacja = new javax.swing.JButton();
         JTKodPocztowy = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabKodPocztowyView = new javax.swing.JTable();
@@ -196,12 +197,20 @@ public class MajnOkienko extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTabAdresView);
 
+        jBAdresModyfikacja.setText("Otwórz okno dodawania/edycji");
+        jBAdresModyfikacja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdresModyfikacjaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTAdresLayout = new javax.swing.GroupLayout(JTAdres);
         JTAdres.setLayout(JTAdresLayout);
         JTAdresLayout.setHorizontalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addComponent(jBAdresWyswietl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jBAdresModyfikacja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTAdresLayout.setVerticalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +218,8 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBAdresWyswietl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBAdresModyfikacja)
                 .addContainerGap())
         );
 
@@ -1653,6 +1664,14 @@ public class MajnOkienko extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jBZlecenieViewActionPerformed
 
+    private void jBAdresModyfikacjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdresModyfikacjaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AdresAddAndEdit().setVisible(true);
+            }
+    }//GEN-LAST:event_jBAdresModyfikacjaActionPerformed
+        );
+    }
     /**
      * @param args the command line arguments
      */
@@ -1705,6 +1724,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JTable JTabKodPocztowyEdit;
     private javax.swing.JTable JTabKodPocztowyNew;
     private javax.swing.JTable JTabKodPocztowyView;
+    private javax.swing.JButton jBAdresModyfikacja;
     private javax.swing.JButton jBAdresWyswietl;
     private javax.swing.JButton jBKodPocztowyEditWczytaj;
     private javax.swing.JButton jBKodPocztowyEditWstaw;
