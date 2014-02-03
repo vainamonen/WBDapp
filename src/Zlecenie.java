@@ -190,7 +190,7 @@ public class Zlecenie  implements java.io.Serializable {
             if (wartosc.length() > 15 || wartosc.isEmpty()) throw  new  Exception();
             if ((new BigDecimal(wartosc)) == null) throw new Exception();
         }
-        catch (Exception e) 
+        catch (Exception e)
         { 
             JOptionPane.showMessageDialog
                 (null, "Błąd - wprowadź poprawną wartość (pole nie puste, max licza 14 znakowa)"

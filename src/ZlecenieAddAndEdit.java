@@ -65,7 +65,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setText("Wybierz czynność");
@@ -137,6 +137,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
 
         jLabel13.setText("Data zakończenia zlecenia");
 
+        jCheckBox1.setSelected(true);
         jCheckBox1.setText("pusta?");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,8 +246,8 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -523,6 +524,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
             try   
             {
                 {
+                    jDateChooser1.setDate(new Date());
                     String query = "from Pojazd";
                     Session session = HibernateUtil.getSessionFactory().getCurrentSession();
                     session.beginTransaction();
@@ -575,7 +577,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
                     }
                 }
                 {
-                    String query = "from Pracownik";
+                    String query = "from Pracownik where stanowisko='kierowca'";
                     Session session = HibernateUtil.getSessionFactory().getCurrentSession();
                     session.beginTransaction();
                     Query q = session.createQuery(query);

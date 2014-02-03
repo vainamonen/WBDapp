@@ -161,16 +161,18 @@ public class Adres  implements java.io.Serializable {
         return ulica + " " + nrDomu + " " + nrLokalu;
     }
     
-    public static boolean verify(String ulica, String nrDomu, String nrLokalu)
+        public static boolean verify(String ulica, String nrDomu, String nrLokalu)
     {
+        
         try 
         {
-            if (ulica.length() > 30 || ulica == "") throw  new  Exception();
+            if (ulica.length() > 30 || ulica.isEmpty()) throw  new  Exception();
+            if (containsIllegalChars(ulica)) throw new Exception();
         }
         catch (Exception e) 
         { 
             JOptionPane.showMessageDialog
-                (null, "Błąd - wprowadź poprawną ulicę (pole nie puste, max 30 znaków)"
+                (null, "Błąd - wprowadź poprawną ulicę (pole nie puste, max 30 znaków a-z, 0-9, '-' i '.')"
                     , "Błąd danych!", 3);
             return false; 
         }
@@ -202,6 +204,19 @@ public class Adres  implements java.io.Serializable {
         }
         
         return true;
+    }
+    
+    public static boolean containsIllegalChars(String str)
+    {
+        String[] stringMap = new String[] {"~", "!", "@", "#", "$", "%", "^", "&", "*", 
+            "_", "+", "=", "{", "}", "[", "]", "|", ";", ":", "\"", ",", "<", ">", "?", "/", "\\"};
+        
+        for(String s : stringMap) 
+        { 
+            if (str.contains(s)) return true;
+        }
+        
+        return false;
     }
 }
 

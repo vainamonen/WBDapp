@@ -113,16 +113,30 @@ public class Pojazd  implements java.io.Serializable {
         try 
         {
             if (numerRejestracyjny.length() > 10) throw  new  Exception();
+            if (containsIllegalChars(numerRejestracyjny)) throw  new  Exception();
         }
         catch (Exception e) 
         { 
             JOptionPane.showMessageDialog
-                (null, "Błąd - wprowadź poprawny numer rejestracyjny (pole nie puste, max 10 znaków)"
+                (null, "Błąd - wprowadź poprawny numer rejestracyjny (pole nie puste, max 10 znaków a-z , 0-9)"
                     , "Błąd danych!", 3);
             return false; 
         }
         
-    return true;
+        return true;
+    }
+    
+    public static boolean containsIllegalChars(String str)
+    {
+        String[] stringMap = new String[] {"~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-",
+            "_", "+", "=", "{", "}", "[", "]", "|", ";", ":", "\"", ",", ".", "<", ">", "?", "/", "\\"};
+        
+        for(String s : stringMap) 
+        { 
+            if (str.contains(s)) return true;
+        }
+        
+        return false;
     }
 }
 
