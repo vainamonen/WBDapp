@@ -26,6 +26,8 @@ public class MajnOkienko extends javax.swing.JFrame {
      */
     public MajnOkienko() {
         initComponents();
+        JTP.setEnabledAt(15, false);
+        JTP.setEnabledAt(1, false);
     }
 
     /**
@@ -45,6 +47,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         JTAdres = new javax.swing.JPanel();
         jBAdresWyswietl = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -109,6 +112,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         jTabZlecenieView = new javax.swing.JTable();
         jBZlecenieView = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jTUsuwanie = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jTFUsuwane = new javax.swing.JTextField();
@@ -177,6 +181,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         );
 
         JTP.addTab("LOGOWANIE", JTLogowanie);
+        JTP.addTab("", jSeparator2);
 
         jBAdresWyswietl.setText("Wyświetl");
         jBAdresWyswietl.addActionListener(new java.awt.event.ActionListener() {
@@ -791,6 +796,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         );
 
         JTP.addTab("ZLECENIE", JTZlecenie);
+        JTP.addTab("", jSeparator1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADRES\t", "KOD POCZTOWY", "KONTRAHENT", "ŁADUNEK", "MODEL", "ODDZIAŁ", "POJAZD", "PRACOWNIK", "SALDO", "STATUS", "TYP TOWARU", "WYDATEK", "ZLECENIE", " " }));
 
@@ -868,7 +874,16 @@ public class MajnOkienko extends javax.swing.JFrame {
             if(res.equals(pass))
             {
                 
-                
+                for(int i=0;i<JTP.getTabCount();i++)
+                        JTP.setEnabledAt(i, true);
+                dupa.setEnabled(false);
+                jButton3.setEnabled(false);
+                jBAdresModyfikacja.setEnabled(  false);
+                jBKodPocztowyEditWczytaj.setEnabled(false);
+                jBKodPocztowyEditWstaw.setEnabled(false);
+                jBKodPocztowyNewNowy.setEnabled(false);
+                jBKodPocztowyNewWstaw.setEnabled(false);
+                //JTP.setEnabled(true);
                 jLabel3.setText("Zalogowano");
                 jLabel3.setForeground(Color.green);
                 //wczytywanie wszystkiego z bazy
@@ -886,20 +901,57 @@ public class MajnOkienko extends javax.swing.JFrame {
                 jBWydatekViewActionPerformed(evt);
                 jBZlecenieViewActionPerformed(evt);
                 JTP.setEnabled(true);
-                if(res.equals("admin"))
+                if(res.equals("admin"))//done
                 {
+                    dupa.setEnabled(true);
+                    jButton3.setEnabled(true);
+                    jBKodPocztowyEditWczytaj.setEnabled(true);
+                    jBKodPocztowyEditWstaw.setEnabled(true);
+                    jBKodPocztowyNewNowy.setEnabled(true);
+                    jBKodPocztowyNewWstaw.setEnabled(true);
+                    jBAdresModyfikacja.setEnabled(true);
+                    JTP.setEnabledAt(1, false);
+                    JTP.setEnabledAt(15, false);
                     //wszystko
                 }
                 else if(res.equals("flota"))
                 {
+                    dupa.setEnabled(true);
+                    for(int i=0;i<JTP.getTabCount();i++)
+                        JTP.setEnabledAt(i, false);
+                    JTP.setEnabledAt(6, true);
+                    JTP.setEnabledAt(8, true);
+                    JTP.setEnabledAt(0, true);
                     //tylko zarządzenie pojazdami i encjami podrzędnymi
                 }
                 else if(res.equals("zlecenie"))
                 {
+                    for(int i=0;i<JTP.getTabCount();i++)
+                        JTP.setEnabledAt(i, false);
+                    JTP.setEnabledAt(0, true);
+                    JTP.setEnabledAt(2, true);
+                    JTP.setEnabledAt(4, true);
+                    JTP.setEnabledAt(5, true);
+                    JTP.setEnabledAt(8, true);
+                    JTP.setEnabledAt(9, true);
+                    JTP.setEnabledAt(11, true);
+                    JTP.setEnabledAt(12, true);
+                    JTP.setEnabledAt(14, true);
+                    jButton3.setEnabled(true);
+                    jBKodPocztowyEditWczytaj.setEnabled(true);
+                    jBKodPocztowyEditWstaw.setEnabled(true);
+                    jBKodPocztowyNewNowy.setEnabled(true);
+                    jBKodPocztowyNewWstaw.setEnabled(true);
+                    
                     //tylko zlecenia
+                    
                 }
-                else if(res.equals("szef"))
+                else if(res.equals("szef"))//done
                 {
+                    
+                    JTP.setEnabledAt(1, false);
+                    JTP.setEnabledAt(15, false);
+                    JTP.setEnabledAt(16, false);
                     //wyłączyć całą edycję, może tylko oglądać
                 }
                 
@@ -1838,6 +1890,8 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
     private javax.swing.JPanel jTUsuwanie;
