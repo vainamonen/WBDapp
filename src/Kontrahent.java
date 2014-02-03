@@ -152,7 +152,8 @@ public class Kontrahent  implements java.io.Serializable {
 
     public String toString()
     {
-        return adres + " " + nip + " " + regon + " " + nazwa + " " + telefon + " " +EMail + " " + opis;
+        /*return adres + " " + nip + " " + regon + " " + nazwa + " " + telefon + " " +EMail + " " + opis;*/
+        return nazwa;
     }
 
 

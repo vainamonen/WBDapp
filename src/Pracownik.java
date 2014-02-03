@@ -187,8 +187,9 @@ public class Pracownik  implements java.io.Serializable {
      @Override
     public String toString()
     {
-        return adres + " " + oddzial + " " + pesel + " " + imie + " " + imie2 + " " + nazwisko + " " + dataUrodzenia + " " + stanowisko + " " + telefon
-                + " " + status + " " + pensja;
+        /*return adres + " " + oddzial + " " + pesel + " " + imie + " " + imie2 + " " + nazwisko + " " + dataUrodzenia + " " + stanowisko + " " + telefon
+                + " " + status + " " + pensja;*/
+        return imie + " " + nazwisko + " " + pesel + " " + stanowisko;
     }
 
 

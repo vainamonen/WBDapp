@@ -108,6 +108,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         jScrollPane15 = new javax.swing.JScrollPane();
         jTabZlecenieView = new javax.swing.JTable();
         jBZlecenieView = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jTUsuwanie = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jTFUsuwane = new javax.swing.JTextField();
@@ -763,12 +764,20 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Otwórz okno dodawania/edycji");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTZlecenieLayout = new javax.swing.GroupLayout(JTZlecenie);
         JTZlecenie.setLayout(JTZlecenieLayout);
         JTZlecenieLayout.setHorizontalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addComponent(jBZlecenieView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTZlecenieLayout.setVerticalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,7 +785,9 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBZlecenieView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(0, 281, Short.MAX_VALUE))
         );
 
         JTP.addTab("ZLECENIE", JTZlecenie);
@@ -1704,8 +1715,25 @@ public class MajnOkienko extends javax.swing.JFrame {
     private void dupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dupaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 /*          */                                                              );
     }///koniec
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)
+    {                                         
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run()
+            {
+                new ZlecenieAddAndEdit().setVisible(true);
+            }
+        }
+        );
+    }  
+    
     private void dupaActionPerformed(java.awt.event.ActionEvent evt)
     {                                         
         java.awt.EventQueue.invokeLater(new Runnable() 
@@ -1789,6 +1817,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jBZlecenieView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
