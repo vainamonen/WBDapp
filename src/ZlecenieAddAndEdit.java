@@ -66,6 +66,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Zlecenie - dodaj lub edytuj");
         setResizable(false);
 
         jLabel1.setText("Wybierz czynność");
@@ -263,7 +264,7 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
                 return;
             if(jCBCzynność.getSelectedIndex()==1 && null!=jCBZlecenie.getSelectedItem())//jeśli edycja
             {
-                
+                adr = (Zlecenie)jCBZlecenie.getSelectedItem();
                 adr.setPojazd((Pojazd)jCBPojazd.getSelectedItem());
                 adr.setAdresByIdMety((Adres)JCBAdresMeta.getSelectedItem());
                 adr.setAdresByIdStartu((Adres)JCBAdresStart.getSelectedItem());
@@ -379,7 +380,10 @@ public class ZlecenieAddAndEdit extends javax.swing.JFrame {
         jTextField2.setText(adr.getOdleglosc().toString());
         jDateChooser1.setDate(adr.getDataPrzyjZlec());
         if(adr.getDataZakZlec()!=null)
+        {
             jDateChooser2.setDate(adr.getDataZakZlec());
+            jCheckBox1.setSelected(false);
+        }
         else
         {
             jDateChooser2.setDate(null);

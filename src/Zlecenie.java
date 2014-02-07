@@ -189,11 +189,12 @@ public class Zlecenie  implements java.io.Serializable {
         {
             if (wartosc.length() > 15 || wartosc.isEmpty()) throw  new  Exception();
             if ((new BigDecimal(wartosc)) == null) throw new Exception();
+            if(new BigDecimal(wartosc).compareTo(BigDecimal.ZERO)==-1) throw new Exception();
         }
         catch (Exception e)
         { 
             JOptionPane.showMessageDialog
-                (null, "Błąd - wprowadź poprawną wartość (pole nie puste, max licza 14 znakowa)"
+                (null, "Błąd - wprowadź poprawną wartość (pole nie puste, max licza 14 znakowa)\nWartość nie może być ujemna."
                     , "Błąd danych!", 3);
             return false; 
         }
@@ -202,11 +203,12 @@ public class Zlecenie  implements java.io.Serializable {
         {
             if (odleglosc.length() > 14 || odleglosc.isEmpty()) throw  new  Exception();
             if ((new BigDecimal(odleglosc)) == null) throw new Exception();
+            if(new BigDecimal(odleglosc).compareTo(BigDecimal.ZERO)==-1) throw new Exception();
         }
         catch (Exception e) 
         { 
             JOptionPane.showMessageDialog
-                (null, "Błąd - wprowadź poprawną odległość (pole nie puste, max licza 7 znakowa)"
+                (null, "Błąd - wprowadź poprawną odległość (pole nie puste, max licza 7 znakowa)\nOdległość nie może być ujemna."
                     , "Błąd danych!", 3);
             return false; 
         }

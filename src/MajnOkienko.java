@@ -1,9 +1,20 @@
 
 import java.awt.Color;
+import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
@@ -112,11 +123,36 @@ public class MajnOkienko extends javax.swing.JFrame {
         jTabZlecenieView = new javax.swing.JTable();
         jBZlecenieView = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jComboBox3 = new javax.swing.JComboBox();
+        jSeparator4 = new javax.swing.JSeparator();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jTUsuwanie = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jTFUsuwane = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jTAREZULTAT = new javax.swing.JTextArea();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jTAKOMENDA = new javax.swing.JTextArea();
+        jBADMINEXE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Spedytor");
@@ -126,11 +162,8 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTP.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         JTP.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         JTP.setDoubleBuffered(true);
+        JTP.setEnabled(false);
         JTP.setMinimumSize(new java.awt.Dimension(800, 600));
-
-        jPasswordField1.setText("Hasło");
-
-        jTextField1.setText("Login");
 
         jLabel1.setText("Login");
 
@@ -160,7 +193,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                         .addGroup(JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))))
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JTLogowanieLayout.setVerticalGroup(
             JTLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +210,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JTP.addTab("LOGOWANIE", JTLogowanie);
@@ -214,7 +247,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTAdres.setLayout(JTAdresLayout);
         JTAdresLayout.setHorizontalGroup(
             JTAdresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBAdresWyswietl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jBAdresModyfikacja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -292,6 +325,11 @@ public class MajnOkienko extends javax.swing.JFrame {
         jScrollPane3.setViewportView(JTabKodPocztowyEdit);
 
         jTFKodPocztowyEdit.setText("ID edytowanego");
+        jTFKodPocztowyEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTFKodPocztowyEditMouseClicked(evt);
+            }
+        });
         jTFKodPocztowyEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFKodPocztowyEditActionPerformed(evt);
@@ -332,7 +370,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                         .addComponent(jBKodPocztowyEditWczytaj)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBKodPocztowyEditWstaw)))
-                .addGap(0, 454, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         JTKodPocztowyLayout.setVerticalGroup(
@@ -354,7 +392,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                     .addComponent(jTFKodPocztowyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBKodPocztowyEditWczytaj)
                     .addComponent(jBKodPocztowyEditWstaw))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JTP.addTab("KOD POCZTOWY", JTKodPocztowy);
@@ -383,7 +421,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTKontrahent.setLayout(JTKontrahentLayout);
         JTKontrahentLayout.setHorizontalGroup(
             JTKontrahentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBKontrahentView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTKontrahentLayout.setVerticalGroup(
@@ -392,7 +430,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBKontrahentView)
-                .addGap(0, 311, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("KONTRAHENT", JTKontrahent);
@@ -421,7 +459,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTLadunek.setLayout(JTLadunekLayout);
         JTLadunekLayout.setHorizontalGroup(
             JTLadunekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBLadunekView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTLadunekLayout.setVerticalGroup(
@@ -430,7 +468,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBLadunekView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("ŁADUNEK", JTLadunek);
@@ -459,7 +497,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTModel.setLayout(JTModelLayout);
         JTModelLayout.setHorizontalGroup(
             JTModelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBModelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTModelLayout.setVerticalGroup(
@@ -468,7 +506,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBModelView)
-                .addGap(0, 308, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("MODEL", JTModel);
@@ -497,7 +535,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTOddzial.setLayout(JTOddzialLayout);
         JTOddzialLayout.setHorizontalGroup(
             JTOddzialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBOddzialView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTOddzialLayout.setVerticalGroup(
@@ -506,7 +544,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBOddzialView)
-                .addGap(0, 311, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("ODDZIAŁ", JTOddzial);
@@ -542,7 +580,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTPojazd.setLayout(JTPojazdLayout);
         JTPojazdLayout.setHorizontalGroup(
             JTPojazdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBPojazdView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(dupa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -554,7 +592,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jBPojazdView)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dupa)
-                .addGap(0, 281, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("POJAZD", JTPojazd);
@@ -583,7 +621,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTPracownik.setLayout(JTPracownikLayout);
         JTPracownikLayout.setHorizontalGroup(
             JTPracownikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBPracownikView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTPracownikLayout.setVerticalGroup(
@@ -592,7 +630,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBPracownikView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("PRACOWNIK", JTPracownik);
@@ -621,7 +659,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTSaldo.setLayout(JTSaldoLayout);
         JTSaldoLayout.setHorizontalGroup(
             JTSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBSaldoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTSaldoLayout.setVerticalGroup(
@@ -630,7 +668,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBSaldoView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("SALDO", JTSaldo);
@@ -659,7 +697,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTStatus.setLayout(JTStatusLayout);
         JTStatusLayout.setHorizontalGroup(
             JTStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBStatusView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTStatusLayout.setVerticalGroup(
@@ -668,7 +706,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBStatusView)
-                .addGap(0, 310, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("STATUS", JTStatus);
@@ -697,7 +735,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTTypTowaru.setLayout(JTTypTowaruLayout);
         JTTypTowaruLayout.setHorizontalGroup(
             JTTypTowaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBTypTowaruView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTTypTowaruLayout.setVerticalGroup(
@@ -706,7 +744,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBTypTowaruView)
-                .addGap(0, 309, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("TYP TOWARU", JTTypTowaru);
@@ -735,7 +773,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         JTWydatek.setLayout(JTWydatekLayout);
         JTWydatekLayout.setHorizontalGroup(
             JTWydatekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addComponent(jBWydatekView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JTWydatekLayout.setVerticalGroup(
@@ -744,7 +782,7 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBWydatekView)
-                .addGap(0, 311, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JTP.addTab("WYDATEK", JTWydatek);
@@ -776,13 +814,125 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
         });
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Odległość  z przedziału", "Odległość ponad", "Odległość poniżej", "Wartość z przedziału", "Wartość ponad", "Wartość poniżej" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("  Kryteria odległości/wartości");
+
+        jButton4.setText("Wykonaj zapytanie");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Data przyjęcia pomiędzy datami", "Data przejęcia po dacie", "Data przyjęcia przed datą" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Wykonaj zapytanie");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane16.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane16.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "W realizacji", "Zakończone", "Zakończone z błędem", "Anulowane" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jList1.setFocusable(false);
+        jList1.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
+        jScrollPane16.setViewportView(jList1);
+
+        jList2.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Drutex\t", "Skanska" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jList2.setEnabled(false);
+        jScrollPane17.setViewportView(jList2);
+
+        jButton6.setText("Odśwież listę kontrahentów");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Wykonaj zapytanie z wybranymi Statusami");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Wykonaj zapytanie z wybranymi Kontrahentami");
+        jButton8.setEnabled(false);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("min");
+
+        jLabel6.setText("max");
+
         javax.swing.GroupLayout JTZlecenieLayout = new javax.swing.GroupLayout(JTZlecenie);
         JTZlecenie.setLayout(JTZlecenieLayout);
         JTZlecenieLayout.setHorizontalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-            .addComponent(jBZlecenieView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator3)
+            .addGroup(JTZlecenieLayout.createSequentialGroup()
+                .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JTZlecenieLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(JTZlecenieLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JTZlecenieLayout.createSequentialGroup()
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JTZlecenieLayout.createSequentialGroup()
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane15)
+                    .addComponent(jBZlecenieView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         JTZlecenieLayout.setVerticalGroup(
             JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -792,7 +942,38 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addComponent(jBZlecenieView)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addGap(0, 281, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JTZlecenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(JTZlecenieLayout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8)))
+                .addGap(74, 74, 74))
         );
 
         JTP.addTab("ZLECENIE", JTZlecenie);
@@ -801,11 +982,33 @@ public class MajnOkienko extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADRES\t", "KOD POCZTOWY", "KONTRAHENT", "ŁADUNEK", "MODEL", "ODDZIAŁ", "POJAZD", "PRACOWNIK", "SALDO", "STATUS", "TYP TOWARU", "WYDATEK", "ZLECENIE", " " }));
 
         jTFUsuwane.setText("ID usuwanego");
+        jTFUsuwane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTFUsuwaneMouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Usuń");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTAREZULTAT.setColumns(20);
+        jTAREZULTAT.setRows(5);
+        jTAREZULTAT.setText("Tu będą wyświetlane rezultaty komend");
+        jScrollPane18.setViewportView(jTAREZULTAT);
+
+        jTAKOMENDA.setColumns(20);
+        jTAKOMENDA.setRows(5);
+        jTAKOMENDA.setText("Tu wpisz komendy, wykonane będzie\n całe to okno.");
+        jScrollPane19.setViewportView(jTAKOMENDA);
+
+        jBADMINEXE.setText("Wykonaj");
+        jBADMINEXE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBADMINEXEActionPerformed(evt);
             }
         });
 
@@ -816,12 +1019,15 @@ public class MajnOkienko extends javax.swing.JFrame {
             .addGroup(jTUsuwanieLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jTUsuwanieLayout.createSequentialGroup()
                         .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(498, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                    .addComponent(jScrollPane18)
+                    .addComponent(jScrollPane19)
+                    .addComponent(jBADMINEXE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         jTUsuwanieLayout.setVerticalGroup(
             jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -832,7 +1038,13 @@ public class MajnOkienko extends javax.swing.JFrame {
                 .addGroup(jTUsuwanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFUsuwane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(535, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBADMINEXE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         JTP.addTab("USUWANIE", jTUsuwanie);
@@ -843,11 +1055,14 @@ public class MajnOkienko extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JTP, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JTP, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(JTP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -865,7 +1080,7 @@ public class MajnOkienko extends javax.swing.JFrame {
         String res = users.get(log);
         if( res == null)
         {
-            jLabel3.setText("Nie znaleziono użytkownika");
+            jLabel3.setText("    Nie znaleziono użytkownika");
             jLabel3.setForeground(Color.red);
             JTP.setEnabled(false);
         }
@@ -884,8 +1099,10 @@ public class MajnOkienko extends javax.swing.JFrame {
                 jBKodPocztowyNewNowy.setEnabled(false);
                 jBKodPocztowyNewWstaw.setEnabled(false);
                 //JTP.setEnabled(true);
-                jLabel3.setText("Zalogowano");
+                jLabel3.setText("    Zalogowano");
                 jLabel3.setForeground(Color.green);
+                jLabel3.setOpaque(true);
+                jLabel3.setBackground(Color.DARK_GRAY);
                 //wczytywanie wszystkiego z bazy
                 jBAdresWyswietlActionPerformed(evt);
                 jBKodPocztowyWyswietlActionPerformed(evt);
@@ -958,7 +1175,7 @@ public class MajnOkienko extends javax.swing.JFrame {
             }
             else
             {
-                jLabel3.setText("Złe hasło");
+                jLabel3.setText("   Złe hasło");
                 jLabel3.setForeground(Color.red);
                 JTP.setEnabled(false);
             }
@@ -1771,8 +1988,469 @@ public class MajnOkienko extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-/*          */                                                              );
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jBADMINEXEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBADMINEXEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBADMINEXEActionPerformed
+
+    private void jTFUsuwaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFUsuwaneMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFUsuwaneMouseClicked
+
+    private void jTFKodPocztowyEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFKodPocztowyEditMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFKodPocztowyEditMouseClicked
+/*          */                                                             );
     }///koniec
+    private void jTFKodPocztowyEditMouseClicked(java.awt.event.MouseEvent evt) {                                                
+        if(jTFKodPocztowyEdit.getText().equals("ID edytowanego"))
+            {
+                jTFKodPocztowyEdit.setText("");
+                repaint();
+                revalidate();
+            }  
+    } 
+    
+     private void jTFUsuwaneMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        if(jTFUsuwane.getText().equals("ID usuwanego"))
+            {
+                jTFUsuwane.setText("");
+                repaint();
+                revalidate();
+            }  
+    }  
+    private void jBADMINEXEActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                           
+        try 
+        {
+            Session sess=HibernateUtil.getSessionFactory().openSession();
+            Statement st=sess.connection().createStatement();
+            String sql=jTAKOMENDA.getText();
+            ResultSet rs = st.executeQuery(sql);
+            jTAREZULTAT.append("\n"+rs+"\n");
+            ResultSetMetaData rsmd = rs.getMetaData();
+            //System.out.println("querying SELECT * FROM XXX");
+            int columnsNumber = rsmd.getColumnCount();
+            while (rs.next()) 
+            {
+                for (int i = 1; i <= columnsNumber; i++) 
+                {
+                    if (i > 1) jTAREZULTAT.append(",  ");
+                    String columnValue = rs.getString(i);
+                    jTAREZULTAT.append(columnValue + " " + rsmd.getColumnName(i));
+                }
+                jTAREZULTAT.append("\n");
+            }
+        } 
+        catch (Exception ex)
+        {
+            jTAREZULTAT.append("\n"+ex.toString());
+            Logger.getLogger(MajnOkienko.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) //zapytanie z kontrahentami
+    {                                         
+        List<Kontrahent> l = jList2.getSelectedValuesList(); 
+        if(l.size()<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Błąd. Nic nie zaznaczyłeś/zaznaczyłaś w liście kontrahentów");
+            return;
+        }
+        String query = "from Zlecenie where kontrahent.nazwa IN (";
+        for(Kontrahent s:l)
+        {
+            query+="'"+s+"', ";
+        }
+        if(null!=query && query.length() > 0 )
+        {
+            int endIndex = query.lastIndexOf(",");
+            if(endIndex != -1)  {
+                query = query.substring(0, endIndex);//usuwanie ostatniego rpzecinka i dodawanie zamykającewgo nawiasu
+        }
+        query+=")";
+        System.out.println(query);
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        
+        Vector<String> tableHeaders = Zlecenie.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Zlecenie foteczka = (Zlecenie)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdZlecenia());
+        oneRow.add(foteczka.getPojazd());
+        oneRow.add(foteczka.getAdresByIdMety());
+        oneRow.add(foteczka.getAdresByIdStartu());
+        oneRow.add(foteczka.getLadunek());
+        oneRow.add(foteczka.getPracownik());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getKontrahent());
+        oneRow.add(foteczka.getWartosc());
+        oneRow.add(foteczka.getOdleglosc());
+        oneRow.add(foteczka.getDataPrzyjZlec());
+        oneRow.add(foteczka.getDataZakZlec());
+                
+        tableData.addElement(oneRow);
+    }
+    //session.close();
+    jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    } 
+    } 
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        List<String> l = jList1.getSelectedValuesList(); 
+        if(l.size()<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Błąd. Nic nie zaznaczyłeś/zaznaczyłaś w liście statusów");
+            return;
+        }
+        String query = "from Zlecenie where status.opis IN (";
+        for(String s:l)
+        {
+            query+="'"+s+"', ";
+        }
+        if(null!=query && query.length() > 0 )
+        {
+            int endIndex = query.lastIndexOf(",");
+            if(endIndex != -1)  {
+                query = query.substring(0, endIndex);//usuwanie ostatniego rpzecinka i dodawanie zamykającewgo nawiasu
+        }
+        query+=")";
+        System.out.println(query);
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        
+        Vector<String> tableHeaders = Zlecenie.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Zlecenie foteczka = (Zlecenie)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdZlecenia());
+        oneRow.add(foteczka.getPojazd());
+        oneRow.add(foteczka.getAdresByIdMety());
+        oneRow.add(foteczka.getAdresByIdStartu());
+        oneRow.add(foteczka.getLadunek());
+        oneRow.add(foteczka.getPracownik());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getKontrahent());
+        oneRow.add(foteczka.getWartosc());
+        oneRow.add(foteczka.getOdleglosc());
+        oneRow.add(foteczka.getDataPrzyjZlec());
+        oneRow.add(foteczka.getDataZakZlec());
+                
+        tableData.addElement(oneRow);
+    }
+    //session.close();
+    jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }  
+    }
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) 
+    {       
+        DefaultListModel listmodelkontr = new DefaultListModel();
+        String query = "from Kontrahent";
+        
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        
+        
+        
+
+    for(Object o : resultList) 
+    {
+        listmodelkontr.addElement(o);
+    }
+    
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        return;
+        //he.printStackTrace();
+    }
+       }
+        
+        jList2.setModel(listmodelkontr);
+        jList2.setEnabled(true);
+        jButton8.setEnabled(true);
+    } 
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                         
+        Date a,b;   
+        String sa,sb;
+        try
+        {
+            a= jDateChooser1.getCalendar().getTime();
+            b= jDateChooser2.getCalendar().getTime();
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
+            sa = df.format(a);
+            sb = df.format(b);
+            if(a.compareTo(b)!=-1)
+            {
+                JOptionPane.showMessageDialog(null, "Mniejsza wartość powinna być wpisana w lewe okno");
+                return;
+            }
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Wpisz poprawne wartości, tych nie da się przetworzyć.");
+            return;
+        }
+        String query = "from Zlecenie where dataPrzyjZlec between '"+sa + "' and '"+sb+"'";
+        System.out.println(query);
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        
+        Vector<String> tableHeaders = Zlecenie.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Zlecenie foteczka = (Zlecenie)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdZlecenia());
+        oneRow.add(foteczka.getPojazd());
+        oneRow.add(foteczka.getAdresByIdMety());
+        oneRow.add(foteczka.getAdresByIdStartu());
+        oneRow.add(foteczka.getLadunek());
+        oneRow.add(foteczka.getPracownik());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getKontrahent());
+        oneRow.add(foteczka.getWartosc());
+        oneRow.add(foteczka.getOdleglosc());
+        oneRow.add(foteczka.getDataPrzyjZlec());
+        oneRow.add(foteczka.getDataZakZlec());
+                
+        tableData.addElement(oneRow);
+    }
+    //session.close();
+    jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }
+    
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt)
+    {                                           
+        if(jComboBox3.getSelectedIndex()==0)//pomiędzy
+        {
+            jDateChooser1.setEnabled(true);
+            jDateChooser2.setEnabled(true);
+        }
+        else if(jComboBox3.getSelectedIndex()==1)//po dacie
+        {
+            jDateChooser1.setEnabled(true);
+            jDateChooser2.setEnabled(false);
+            jDateChooser2.setDate(new Date(190000000000000L));
+            
+        }
+        else //przed datą
+        {
+            jDateChooser1.setEnabled(false);
+            jDateChooser2.setEnabled(true);
+            jDateChooser1.setDate(new Date(0L));
+            
+        }
+    }
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) 
+    {     BigDecimal a,b;    
+        try
+        {
+            a= new BigDecimal(jTextField2.getText());
+            b= new BigDecimal(jTextField3.getText());
+            if(a.compareTo(b)!=-1)
+            {
+                JOptionPane.showMessageDialog(null, "Mniejsza wartość powinna być wpisana w lewe okno");
+                return;
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Wpisz poprawne wartości, tych nie da się przetworzyć.");
+            return;
+        }
+        String query = "from Zlecenie where ";
+        if(jComboBox2.getSelectedIndex()<=2 && jComboBox2.getSelectedIndex()>=0)//odległosć
+        {
+            
+            query += "odleglosc between "+a + " and "+b;
+            
+        }
+        else//wartość
+        {
+            query += "wartosc between "+a + " and "+b;
+        }
+       {
+           try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(query);
+        List resultList = q.list();
+        //displayResult(resultList);
+        session.getTransaction().commit();
+        
+        Vector<String> tableHeaders = Zlecenie.getKolumny();
+        Vector tableData = new Vector();
+        
+
+    for(Object o : resultList) {
+        Zlecenie foteczka = (Zlecenie)o;
+        
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(foteczka.getIdZlecenia());
+        oneRow.add(foteczka.getPojazd());
+        oneRow.add(foteczka.getAdresByIdMety());
+        oneRow.add(foteczka.getAdresByIdStartu());
+        oneRow.add(foteczka.getLadunek());
+        oneRow.add(foteczka.getPracownik());
+        oneRow.add(foteczka.getStatus());
+        oneRow.add(foteczka.getKontrahent());
+        oneRow.add(foteczka.getWartosc());
+        oneRow.add(foteczka.getOdleglosc());
+        oneRow.add(foteczka.getDataPrzyjZlec());
+        oneRow.add(foteczka.getDataZakZlec());
+                
+        tableData.addElement(oneRow);
+    }
+    //session.close();
+    jTabZlecenieView.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }});
+    } catch (HibernateException he) {
+        JOptionPane.showMessageDialog(null, "Jakiś błąd hibernate.\n"+he.toString());
+        //he.printStackTrace();
+    }
+       }
+    }  
+    
+   
+    
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt)//klikanie wykonaj zapytanie wart/odległosc
+    {                //wyszarzanie guzików i ustawianie bigdecimal na max                           
+        if(jComboBox2.getSelectedIndex()==0)//odleglosc pomiedzy
+        {
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(true);
+        }
+        else if(jComboBox2.getSelectedIndex()==1)//odl ponad
+        {
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(false);
+            jTextField3.setText(new BigDecimal(Integer.MAX_VALUE).toString());
+        }
+        else if(jComboBox2.getSelectedIndex()==2)//odl ponizej
+        {
+            jTextField2.setEnabled(false);
+            jTextField3.setEnabled(true);
+            jTextField2.setText(BigDecimal.ZERO.toString());
+        }
+        else if(jComboBox2.getSelectedIndex()==3)//wart pomiedzy
+        {
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(true);
+            jTextField3.setText(new BigDecimal(Integer.MAX_VALUE).toString());
+        }
+        else if(jComboBox2.getSelectedIndex()==4)//wart ponad
+        {
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(false);
+        }
+        else if(jComboBox2.getSelectedIndex()==5)//wart ponizej
+        {
+            jTextField2.setEnabled(false);
+            jTextField3.setEnabled(true);
+            jTextField2.setText(BigDecimal.ZERO.toString());
+        }
+    }  
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)
     {                                         
@@ -1849,6 +2527,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JTable JTabKodPocztowyNew;
     private javax.swing.JTable JTabKodPocztowyView;
     private javax.swing.JButton dupa;
+    private javax.swing.JButton jBADMINEXE;
     private javax.swing.JButton jBAdresModyfikacja;
     private javax.swing.JButton jBAdresWyswietl;
     private javax.swing.JButton jBKodPocztowyEditWczytaj;
@@ -1870,10 +2549,24 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -1882,6 +2575,10 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1892,6 +2589,10 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextArea jTAKOMENDA;
+    private javax.swing.JTextArea jTAREZULTAT;
     private javax.swing.JTextField jTFKodPocztowyEdit;
     private javax.swing.JTextField jTFUsuwane;
     private javax.swing.JPanel jTUsuwanie;
@@ -1908,5 +2609,7 @@ public class MajnOkienko extends javax.swing.JFrame {
     private javax.swing.JTable jTabWydatekView;
     private javax.swing.JTable jTabZlecenieView;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
